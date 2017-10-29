@@ -1,9 +1,15 @@
-require 'sinatra'
+require 'sinatra/base'
+require 'padrino-helpers'
 
-get '/' do
-  'Hello world!'
-end
+class Fodrasz < Sinatra::Base
+  register Padrino::Helpers
+  set :protect_from_csrf, true
 
-get '/contact_form' do
-  erb :contact_form
+  get '/' do
+    'Hello world!'
+  end
+
+  get '/contact_form' do
+    haml :contact_form
+  end
 end
