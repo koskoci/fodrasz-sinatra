@@ -1,15 +1,16 @@
-= form_tag '/email', :class => 'contact-form', :method => 'post' do
+= form_tag '/email', class: 'contact-form', method: 'post' do
   = field_set_tag do
     %p
-      = label_tag :username, :class => 'first'
-      = text_field_tag :username, :value => params[:username]
+      = label_tag :vezetéknév, class: 'first'
+      = text_field_tag :last_name
     %p
-      = label_tag :password, :class => 'first'
-      = password_field_tag :password, :value => params[:password]
+      = label_tag :keresztnév, class: 'first'
+      = text_field_tag :first_name
     %p
-      = label_tag :strategy
-      = select_tag :strategy, :options => ['delete', 'destroy'], :selected => 'delete'
+      = label_tag :telefonszám, class: 'first'
+      = telephone_field_tag :phone, oninvalid: "setCustomValidity('Helytelen telefonszám!')", oninput: "setCustomValidity('')"
     %p
-      = check_box_tag :confirm_delete
-  = field_set_tag(:class => 'buttons') do
-    = submit_tag "Remove"
+      = label_tag "e-mail cím".to_sym
+      = email_field_tag :email, value: "Nem kötelezö megadni", oninvalid: "setCustomValidity('Helytelen e-mail cím!')", oninput: "setCustomValidity('')"
+  = field_set_tag(class: 'buttons') do
+    = submit_tag "Elküldés"
