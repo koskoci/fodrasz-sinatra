@@ -21,12 +21,6 @@ class Fodrasz < Sinatra::Base
   end
 
   post '/email' do
-    require "pry"; binding.pry
-    email(
-      from: params[:email],
-      to: "***REMOVED***",
-      subject: "Szeretnek idopontot foglalni",
-      body: "#{params[:last_name]} #{params[:first_name]} szeretne idopontot foglalni a fodrászatba. Tel: #{params[:phone]}"
-    )
+    "Email should be sent at this point."
   end
 end
